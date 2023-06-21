@@ -17,8 +17,15 @@ public class BilliardTable extends Desk {
         this.numberOfBalls = numberOfBalls;
     }
     @Override
-    public void adjustHeight(int centimeters){ height += centimeters; }
+    public void adjustHeight(int centimeters){
+        height = centimeters;
+    }
 
     @Override
-    public void moveDown(int centimeters) { height -= centimeters; }
+    public void moveDown(int centimeters) {
+        height = centimeters;
+    }
+    public String toCSV() {
+        return super.toCSV() + ", " + numberOfPlayers + ", " + numberOfBalls;
+    }
 }

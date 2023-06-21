@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 public class DeskManager {
     private final List<Desk> desks = new LinkedList<>();
+    public static DeskManager create() {
+        return new DeskManager();
+    }
 
     public void addDesk(final Desk desk) {
         desks.add(desk);
@@ -21,4 +24,5 @@ public class DeskManager {
         return desks.stream().filter(desk -> desk.getLength() * desk.getWidth() > squareCentimeters).
                 collect(Collectors.toList());
     }
+
 }

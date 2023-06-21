@@ -10,12 +10,18 @@ import lombok.ToString;
 @Setter
 @ToString
 public abstract class Desk {
+
     protected int height;
     protected int width;
     protected int length;
 
-
     public abstract void adjustHeight(int centimeters);
 
     public abstract void moveDown(int centimeters);
+    public String getHeaders(){
+        return "height, width, length";
+    }
+    public String toCSV(){
+        return height + ", " + width + ", " + length;
+    }
 }
