@@ -1,6 +1,8 @@
-package src.ua.lviv.iot.algo.part1.lab1;
+package ua.lviv.iot.algo.part1.lab1;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -12,7 +14,6 @@ public class WritingDesk extends Desk {
     private int maxWeightCapacity;
     private int maxHeight;
 
-    @Builder
     public WritingDesk(int height, int width, int length, int numberOfDrawers, boolean hasKeyboardTray, int maxWeightCapacity, int maxHeight) {
         super(height, width, length);
         this.numberOfDrawers = numberOfDrawers;
@@ -20,24 +21,23 @@ public class WritingDesk extends Desk {
         this.maxWeightCapacity = maxWeightCapacity;
         this.maxHeight = maxHeight;
     }
-
     @Override
-    public int adjustHeight(int centimeters) {
+    public void adjustHeight(int centimeters) {
         height += centimeters;
 
         if (height > maxHeight) {
             height = maxHeight;
         }
-        return maxHeight;
+
     }
 
     @Override
-    public int moveDown(int centimeters) {
+    public void moveDown(int centimeters) {
         int newHeight = height - centimeters;
         if (newHeight >= 0) {
             height = newHeight;
         }
-        return height;
+
     }
 }
 
