@@ -28,7 +28,6 @@ public class WritingDesk extends Desk {
         if (height > maxHeight) {
             height = maxHeight;
         }
-
     }
 
     @Override
@@ -37,7 +36,8 @@ public class WritingDesk extends Desk {
         if (newHeight >= 0) {
             height = newHeight;
         }
-
+    }
+    public String toCSV() {
+        return super.toCSV() + ", " + numberOfDrawers + ", " + hasKeyboardTray + ", " + maxWeightCapacity + ", " + maxHeight;
     }
 }
-
