@@ -1,40 +1,43 @@
 package src.ua.lviv.iot.algo.part1.lab1;
 
-
 import lombok.*;
 
-@AllArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
-public class WritingDesk {
+public class WritingDesk extends Desk {
 
-    private static WritingDesk instance = new WritingDesk(2, true, 50, 80, 120);
     private int numberOfDrawers;
     private boolean hasKeyboardTray;
     private int maxWeightCapacity;
-    private int currentHeight;
     private int maxHeight;
 
-    public static WritingDesk getInstance() {
-        return instance;
+    @Builder
+    public WritingDesk(int height, int width, int length, int numberOfDrawers, boolean hasKeyboardTray, int maxWeightCapacity, int maxHeight) {
+        super(height, width, length);
+        this.numberOfDrawers = numberOfDrawers;
+        this.hasKeyboardTray = hasKeyboardTray;
+        this.maxWeightCapacity = maxWeightCapacity;
+        this.maxHeight = maxHeight;
     }
 
+    @Override
     public int adjustHeight(int centimeters) {
-        currentHeight += centimeters;
+        height += centimeters;
 
-        if (currentHeight > maxHeight) {
-            currentHeight = maxHeight;
+        if (height > maxHeight) {
+            height = maxHeight;
         }
         return maxHeight;
     }
 
+    @Override
     public int moveDown(int centimeters) {
-        int newHeight = currentHeight - centimeters;
+        int newHeight = height - centimeters;
         if (newHeight >= 0) {
-            currentHeight = newHeight;
+            height = newHeight;
         }
-        return currentHeight;
+        return height;
     }
 }
+
